@@ -1,5 +1,5 @@
-# Spike_EM
-EM Algorithm to estimate the latent model parameters of a spike train modeled as a Poisson point process.
+# SpikeOsc
+Runs an Expectation-Maximization (EM) Algorithm to estimate the latent oscillatory dynamics of a spike train modeled as a Poisson point process.
 
 
 ## Observation Model
@@ -20,16 +20,10 @@ We define the latent model as an autoregressive model AR(1) where the variable i
 ```
 Where, $x_t$ is a 2-d vector representing the hidden states that affect a neuron's activity. 
 
-## testing
-- Testing Functions: Use to double check implementation of jacobian, hessian and KF
-  - check_gradient
-  - test_max_L
-  - test_KF
-- Helpers:
-    - Use gen_params() for randomized input parameters. 
-- Kalman Filter & Fixed Interval Smoother
-  - Single ocillation implementation complete
-- EM
-  - E-step (<b> np.dot </b> is problematic )
-  
-  
+## Expectation Step
+- Estimates the oscillatory signal with a current set of model parameters
+- Implemented using an Extended Kalman Filter (EKF) or Gaussian Particle Filter (GPF)
+
+## Maximization Step
+- Uses estimated oscillations to maximize the estimate of model parameters
+- Includes options for regularization  - especially important for EKF
